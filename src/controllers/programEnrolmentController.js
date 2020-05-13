@@ -24,7 +24,7 @@ const programEnrolmentCheckRules = (req, res, next) => {
         res.status(200)
             .json({
                 status: 'success',
-                data: rulevalidated
+                visibility : rulevalidated
             });
     })
       .catch(function (err) {

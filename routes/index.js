@@ -17,6 +17,6 @@ router.post('/api/program_enrolment_rule',programEnrolmentController.decisionRul
 
 router.post('/api/individual_validation_rule',individualController.validationRules);
 
-router.post('/api/program_enrolment_check_rule',programEnrolmentController.decisionRules);
+router.post('/api/program_enrolment_check_rule',programEnrolmentController.programEnrolmentCheckRules);
 
 module.exports = router;

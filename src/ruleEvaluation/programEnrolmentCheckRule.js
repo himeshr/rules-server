@@ -8,7 +8,7 @@ export const programEnrolmentCheckRule = async (rule,entity) => {
     };
     const ruleFunc = eval(rule);
     const ruleProgramEnrolmentChecks = ruleFunc({
-        params: {decisions: defaultDecisions, entity},
+        params: {entity},
         imports: {rulesConfig, lodash , moment}
     });
     return ruleProgramEnrolmentChecks;
