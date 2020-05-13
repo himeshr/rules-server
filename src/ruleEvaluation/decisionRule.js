@@ -24,3 +24,21 @@ export const visitScheduleRule = async (rule,entity,scheduledVisits) => {
     });
     return nextVisits;
 }
+
+export const enrolmentEligibilityCheckRule = async (rule,entity) => {
+    const ruleFunc = eval(rule);
+    const ruleProgramEnrolmentChecks = ruleFunc({
+        params: {entity},
+        imports: {rulesConfig, lodash , moment}
+    });
+    return ruleProgramEnrolmentChecks;
+}
+
+export const validationRule = async (rule,entity) => {
+    const ruleFunc = eval(rule);
+    const ruleValidations = ruleFunc({
+        params: {entity},
+        imports: { rulesConfig, lodash , moment }
+    });
+    return ruleValidations;
+}
