@@ -31,7 +31,40 @@ const visitScheduleRules = (req, res, next) => {
       });
 }
 
+const encounterEligibilityCheckRules = (req, res, next) => {
+  rulesService.findRulesById(req.body, res, next)
+    .then(async function (data) {
+        const rulevalidated = await encounter(JSON.parse(JSON.stringify(data))[0].rules,req.body);
+        res.status(200)
+            .json({
+                status: 'success',
+                visibility: rulevalidated
+            });
+    })
+      .catch(function (err) {
+        return next(err);
+      });
+}
+
+const validationRules = (req, res, next) => {
+  rulesService.findRulesById(req.body, res, next)
+    .then(async function (data) {
+        const rulevalidated = await encounter(JSON.parse(JSON.stringify(data))[0].rules,req.body);
+        res.status(200)
+            .json({
+                status: 'success',
+                formValidate: rulevalidated
+            });
+    })
+      .catch(function (err) {
+        return next(err);
+      });
+
+}
+
 module.exports = {
   generateRules: generateRules,
-  visitScheduleRules: visitScheduleRules
+  visitScheduleRules: visitScheduleRules,
+  encounterEligibilityCheckRules: encounterEligibilityCheckRules,
+  validationRules: validationRules
 };

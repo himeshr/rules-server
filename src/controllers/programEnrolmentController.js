@@ -46,8 +46,25 @@ const enrolmentEligibilityCheckRules = (req, res, next) => {
       });
 }
 
+const validationRules = (req, res, next) => {
+  rulesService.findRulesById(req.body, res, next)
+    .then(async function (data) {
+        const rulevalidated = await programEnrolment(JSON.parse(JSON.stringify(data))[0].rules,req.body);
+        res.status(200)
+            .json({
+                status: 'success',
+                formValidate: rulevalidated
+            });
+    })
+      .catch(function (err) {
+        return next(err);
+      });
+
+}
+
 module.exports = {
     decisionRules: decisionRules,
     visitScheduleRules : visitScheduleRules,
-    enrolmentEligibilityCheckRules: enrolmentEligibilityCheckRules
+    enrolmentEligibilityCheckRules: enrolmentEligibilityCheckRules,
+    validationRules: validationRules
 };

@@ -34,6 +34,15 @@ export const enrolmentEligibilityCheckRule = async (rule,entity) => {
     return ruleProgramEnrolmentChecks;
 }
 
+export const encounterEligibilityCheckRule = async (rule,entity) => {
+    const ruleFunc = eval(rule);
+    const ruleEncounterChecks = ruleFunc({
+        params: {entity},
+        imports: {rulesConfig, lodash , moment}
+    });
+    return ruleEncounterChecks;
+}
+
 export const validationRule = async (rule,entity) => {
     const ruleFunc = eval(rule);
     const ruleValidations = ruleFunc({
