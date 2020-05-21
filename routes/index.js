@@ -31,6 +31,6 @@ router.post('/api/formvalidation_encounter_rule',encounterController.validationR
 
 router.post('/api/enrolmenteligibilitycheck_program_enrolment_rule',programEnrolmentController.enrolmentEligibilityCheckRules);
 
-router.post('/api/encountereligibilitycheck_program_encounter_rule',encounterController.encounterEligibilityCheckRules);
+router.post('/api/encountereligibilitycheck_encounter_rule',encounterController.encounterEligibilityCheckRules);
 
 module.exports = router;
