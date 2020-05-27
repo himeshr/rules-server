@@ -1,6 +1,7 @@
 import * as rulesConfig from 'rules-config';
 import lodash from 'lodash';
 import moment from 'moment';
+import * as models  from "openchs-models";
 
 export const decisionRule = async (rule,entity) => {
     const defaultDecisions = {
@@ -23,4 +24,13 @@ export const visitScheduleRule = async (rule,entity,scheduledVisits) => {
         imports: { rulesConfig, lodash, moment }
     });
     return nextVisits;
+}
+
+export const workListRule = async (rule,entity,workLists) => {
+    const ruleFunc = eval(rule);
+    const workList = ruleFunc({
+        params: { workLists, context:entity },
+        imports: { rulesConfig, lodash, moment, models }
+    });
+    return workList;
 }
