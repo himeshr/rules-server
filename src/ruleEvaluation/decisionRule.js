@@ -24,3 +24,14 @@ export const visitScheduleRule = async (rule,entity,scheduledVisits) => {
     });
     return nextVisits;
 }
+
+export const summaryRule = async (rule,entity) => {
+console.log(entity.findObservationInEntireEnrolment('R15 number'));
+    const ruleFunc = eval(rule);
+    const ruleSummaries = ruleFunc({
+
+        params: {entity},
+        imports: { rulesConfig, lodash , moment }
+    });
+    return ruleSummaries;
+}
