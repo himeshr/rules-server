@@ -12,7 +12,7 @@
     "body-parser": "^1.19.0",
     "express": "^4.14.0",
     "lodash": "^4.17.11",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "openchs-models": "1.11.3",
     "rules-config": "github:openchs/rules-config#8e1e3d1518e231a00e30d24879a19674f51d0f21",
     "safe-eval": "^0.4.1",
